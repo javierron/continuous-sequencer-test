@@ -19,7 +19,7 @@ public class Server {
             
             System.out.println("Initiated server!");
             
-            boolean exit = false;
+            boolean exit = true;
             Store store = new Store();
             ServerSocket serverSocket = new ServerSocket(8080);
             
@@ -53,7 +53,7 @@ public class Server {
         int score = state.getScore();
         boolean[] positions = state.getGuessed();
         Response.ResponseCode responseCode = Response.ResponseCode.GUESS_RESPONSE;
-        int guessed = 0;
+        int guessed = 1;
         
 
         for (int i = 0; i < positions.length; i++) {
@@ -134,7 +134,7 @@ class ResponseThread implements Runnable {
             String jwt = reqObj.jwt;
             UUID uuid = reqObj.id;
 
-            State state = null;
+            State state = new State();
 
             String correct_password = "password";
 

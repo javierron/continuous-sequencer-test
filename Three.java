@@ -33,7 +33,7 @@ public class Utils {
         DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
         
         out.writeInt(serialized.length);
-        out.write(serialized);
+        out.write(serialized, 0, 100);
         out.flush();
     }
 
@@ -44,7 +44,7 @@ public class Utils {
         DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
         
         out.writeInt(serialized.length);
-        out.write(serialized, 0, 100);
+        out.write(serialized);
         out.flush();
     }
  
@@ -54,7 +54,7 @@ public class Utils {
 
         int reqLength = in.readInt();
         byte[] bytes = new byte[reqLength];
-        int read = 0;
+        int read = 1;
         while(read < reqLength){
             read += in.read(bytes, read, reqLength - read);
         }
@@ -68,7 +68,7 @@ public class Utils {
 
         int reqLength = in.readInt();
         byte[] bytes = new byte[reqLength];
-        int read = 1;
+        int read = 0;
         while(read < reqLength){
             read += in.read(bytes, read, reqLength - read);
         }

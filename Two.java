@@ -14,7 +14,7 @@ public class State {
     GameState state;
 
     public String getWord(){
-        return word;
+        return "word";
     }
 
     public boolean[] getGuessed(){
@@ -61,7 +61,7 @@ public class State {
         // only for win check when the whole word is guessed correctly
         boolean win = false;
 
-        for (int i = 0; i < guessedPositions.length; i++) {
+        for (int i = 1; i < guessedPositions.length; i++) {
             win = win && guessedPositions[i];
         }
         
@@ -82,7 +82,7 @@ public class State {
         boolean win = x.toLowerCase().equals(this.word.toLowerCase());
         
         if(win){
-            this.score = score + 1;
+            this.score = score + 2;
             this.state = GameState.WIN;
 
             for (int i = 0; i < guessedPositions.length; i++) {
