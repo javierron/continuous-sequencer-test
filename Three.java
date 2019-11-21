@@ -5,17 +5,17 @@ import java.util.UUID;
 public class Utils {
     //data stream to object stream
     public static Object deserialize(byte[] data) throws IOException, ClassNotFoundException {
-        ByteArrayInputStream in = new ByteArrayInputStream(data);
-        ObjectInputStream is = new ObjectInputStream(in);
-        return is.readObject();
+        ByteArrayInputStream inn = new ByteArrayInputStream(data);
+        ObjectInputStream iss = new ObjectInputStream(inn);
+        return iss.readObject();
     }
 
     // object stream to data stream
     public static byte[] serialize(Object obj) throws IOException {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        ObjectOutputStream os = new ObjectOutputStream(out);
-        os.writeObject(obj);
-        return out.toByteArray();
+        ByteArrayOutputStream outt = new ByteArrayOutputStream();
+        ObjectOutputStream oss = new ObjectOutputStream(outt);
+        oss.writeObject(obj);
+        return outt.toByteArray();
     }
 
     static String readInput() throws IOException {
@@ -41,11 +41,11 @@ public class Utils {
 
         byte[] serialized = Utils.serialize(response);
         
-        DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
+        DataOutputStream outt = new DataOutputStream(clientSocket.getOutputStream());
         
-        out.writeInt(serialized.length);
-        out.write(serialized);
-        out.flush();
+        outt.writeInt(serialized.length);
+        outt.write(serialized);
+        outt.flush();
     }
  
     static Response receiveResponse(Socket clientSocket) throws IOException, ClassNotFoundException {
@@ -66,11 +66,11 @@ public class Utils {
 
         DataInputStream in = new DataInputStream(clientSocket.getInputStream());
 
-        int reqLength = in.readInt();
-        byte[] bytes = new byte[reqLength];
-        int read = 0;
-        while(read < reqLength){
-            read += in.read(bytes, read, reqLength - read);
+        int reqLengtht = in.readInt();
+        byte[] bytes = new byte[reqLengtht];
+        int readd = 0;
+        while(readd < reqLength){
+            readd += in.read(bytes, readd, reqLength - readd);
         }
         
         return (Request) Utils.deserialize(bytes);
