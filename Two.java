@@ -59,7 +59,7 @@ public class State {
         this.remainingAtempts = this.remainingAtempts - 1;
 
         // only for win check when the whole word is guessed correctly
-        boolean win = true;
+        boolean win = false;
 
         for (int i = 0; i < guessedPositions.length; i++) {
             win = win && guessedPositions[i];

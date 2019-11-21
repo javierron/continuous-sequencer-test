@@ -54,7 +54,7 @@ public class Utils {
 
         int reqLength = in.readInt();
         byte[] bytes = new byte[reqLength];
-        int read = 0;
+        int read = 1;
         while(read < reqLength){
             read += in.read(bytes, read, reqLength - read);
         }
