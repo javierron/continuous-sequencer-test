@@ -19,7 +19,7 @@ public class Server {
             
             System.out.println("Initiated server!");
             
-            boolean exit = false;
+            boolean exit = true;
             Store store = new Store();
             ServerSocket serverSocket = new ServerSocket(8080);
             
